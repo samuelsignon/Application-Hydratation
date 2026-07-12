@@ -1,5 +1,6 @@
-package com.example.data
+package com.example.applicationhydratation.data
 
+import com.example.applicationhydratation.ui.WaterViewModel
 import kotlinx.coroutines.flow.Flow
 
 class WaterRepository(private val waterDao: WaterViewModel) {

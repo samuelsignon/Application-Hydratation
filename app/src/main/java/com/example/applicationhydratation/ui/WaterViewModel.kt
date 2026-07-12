@@ -1,10 +1,10 @@
-package com.example.ui
+package com.example.applicationhydratation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.data.WaterRecord
-import com.example.data.WaterRepository
+import com.example.applicationhydratation.data.WaterRecord
+import com.example.applicationhydratation.data.WaterRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -62,7 +62,12 @@ class WaterViewModel(private val repository: WaterRepository) : ViewModel() {
     // Ajouter de l'eau
     fun addWater(amountMl: Int = 250) {
         viewModelScope.launch {
-            repository.insert(WaterRecord(amountMl = amountMl))
+            repository.insert(
+                WaterRecord(
+                    amountMl = amountMl,
+                    timestamp = System.currentTimeMillis()
+                )
+            )
         }
     }
 
@@ -76,7 +81,6 @@ class WaterViewModel(private val repository: WaterRepository) : ViewModel() {
     // Remettre à zéro
     fun resetToday() {
         viewModelScope.launch {
-            // Supprimer toutes les données
             repository.clearAll()
         }
     }
