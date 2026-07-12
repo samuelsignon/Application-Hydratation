@@ -350,7 +350,7 @@ fun ActionButtonsRow(
             ),
             shape = RoundedCornerShape(16.dp)
         ) {
-            Icon(x
+            Icon(
                 imageVector = Icons.Default.RestartAlt,
                 contentDescription = "Réinitialiser"
             )
